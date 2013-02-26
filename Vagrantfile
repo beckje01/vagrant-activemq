@@ -11,12 +11,14 @@ Vagrant::Config.run do |config|
 
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
-  config.vm.forward_port 8160, 8160
-  #config.vm.forward_port 2003, 2003
+  config.vm.forward_port 8161, 8161
+  config.vm.forward_port 6166, 6166
+  config.vm.forward_port 6163, 6163
   #config.vm.forward_port 8125, 8125, { :protocol => 'udp' }
 
 
   config.vm.provision :puppet do |puppet|
+    puppet.module_path    = "modules"
     puppet.manifests_path = "manifests"
     puppet.manifest_file  = "base.pp"
   end
